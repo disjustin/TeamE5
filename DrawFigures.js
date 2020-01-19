@@ -1,3 +1,8 @@
+// Rohan Skariah 
+// Tangia Sun
+// Ryan Teoh 
+// Justin Wong 
+
 //We are using canvas to draw the shapes
 var canvas = document.querySelector('canvas');
 
@@ -12,6 +17,7 @@ var gridFactor = 10;
 //Allows the users to change the scaling of the graph where the shapes appear.
 function changeGridFactor(newGridFactor)
 {
+    c.clearRect(0, 0, canvas.width, canvas.height);
     gridFactor = newGridFactor;
     drawGrid();
 }
@@ -79,7 +85,7 @@ function drawCircle(radius)
         alert("Values must be non-negative, duh");
 }
 
-
+// Draws the rectangle shape
 function drawRect(width, height)
 {
     if (width < 0 || height < 0)
@@ -102,6 +108,7 @@ function drawRect(width, height)
     }
 }
 
+// Draws the triangle
 function drawTriangle(side1, side2, angle, equal)
 {
     var side1 = parseInt(side1) * gridFactor;
@@ -171,6 +178,7 @@ function drawTriangle(side1, side2, angle, equal)
     }
 }
 
+// Draws the ellipse
 function drawEllipse(majorRadius, minorRadius)
 {
     if ((majorRadius * gridFactor > canvas.height) || (majorRadius * gridFactor > canvas.width) || 
