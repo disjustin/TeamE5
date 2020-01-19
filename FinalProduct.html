@@ -33,17 +33,15 @@ canvas {background: transparent}
 <h1>Draw-A-Figure</h1>
 <button class="block" onclick="tributton()">Triangle</button>
 <button class="block" onclick="quadbutton()">Quadrilateral</button>
-<button class="block"onclick="circbutton()">Circle</button>
+<button class="block"onclick="conicButton()">Conic</button>
 
 <div id= "triinterface", class="hidden">
-    <button  class= "block"> Isosceles Triangle</button>
-
     <h1>Input for Triangle:</h1>
-    <input type = "number" id = "triLeg1" value= "triLeg1" placeholder = "Enter Length of first Triangle Side">
-    <input type = "number" id = "triLeg2" value= "triLeg2" placeholder = "Enter Length of second Triangle Side">
-    <input type = "number" id = "angle" value= "angle" placeholder = "Enter angle between two sides">
+    <input type = "number" id = "triLeg1" value= "triLeg1" placeholder = "Enter Length of Side 1">
+    <input type = "number" id = "triLeg2" value= "triLeg2" placeholder = "Enter Length of Side 2">
+    <input type = "number" id = "angle" value= "angle" placeholder = "Enter Angle between Them">
     <br>
-    <button type = "submit" onclick="drawTriangle(document.getElementById('triLeg1').value, document.getElementById('triLeg2').value,document.getElementById('angle').value)" id = "btnRect"> Click for rectangle </button>
+    <button type = "submit" onclick="drawTriangle(document.getElementById('triLeg1').value, document.getElementById('triLeg2').value,document.getElementById('angle').value)" id = "btnRect"> Click for Triangle </button>
 </div>
 
 <div id= "quadinterface", class="hidden">
@@ -69,16 +67,32 @@ canvas {background: transparent}
 
 </div>
 
-<div id= "circinterface", class="hidden"> 
-    <!--circle-->
-    <h1>Enter Radius:</h1>
-    <input type = "number" id = "radius" value= "radius" placeholder = "Enter the Radius"> 
-    <br>
-    <button type = submit onclick="drawCircle(document.getElementById('radius').value)" id = "btn1"> Click when ready </button> 
+<div id= "conicinterface", class="hidden">
+    <h1>Select your Conic Shape</h1>
+    <button class="block" onclick="displayInputCircle()">Circle </button>
+    <button class="block" onclick="displayInputEllipse()">Ellipse</button>
+
+    <div id= "circinterface", class="hidden"> 
+        <!--circle-->
+        <h1>Enter Radius:</h1>
+        <input type = "number" id = "radius" value= "radius" placeholder = "Enter the Radius"> 
+        <br>
+        <button type = submit onclick="drawCircle(document.getElementById('radius').value)" id = "btn1"> Click for Circle </button> 
+    </div>
+
+    <div id= "ellipseinterface", class="hidden"> 
+        <!--ellipse-->
+        <h1>Enter Radii:</h1>
+        <input type = "number" id = "majorRadius" value= "majorRadius" placeholder = "Enter the Major-Axis Radius"> 
+        <input type = "number" id = "minorRadius" value= "minorRadius" placeholder = "Enter the Minor-Axis Radius"> 
+        <br>
+        <button type = submit onclick="drawEllipse(document.getElementById('majorRadius').value, document.getElementById('minorRadius').value)" id = "ellipsebtn"> Click for Ellipse </button> 
+    </div>
 </div>
+
 <br>
 <canvas></canvas>
 <script src="DrawFigures.js"></script>
 <script src="Interface_buttons.js"></script>
 </body>
-</html>  
+</html> 
