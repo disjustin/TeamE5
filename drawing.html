@@ -9,19 +9,23 @@
         }
         body { margin: 0; }
     </style>
+    <script type = "text/drawCircle">
+    function radius()
+    {
+        var radius = document.getElementById("radius").value;
+        alert("Radius is " + radius);
+        onclick("drawCircle()");
+    }
+    </script>
+
 </head>
 <body>
 
-    <div class="form">
-        <label for="guessField">Radius of Circle? </label><input type="text" id="radius" class="radius">
-        <input type="submit" value="Submit Radius" class="radiusSubmit">
-      </div>
-
+    <input id = "radius" placeholder = "Enter the Radius">
+    <br><br>
+    <button value="submit" onclick="drawCircle()" id = "btn1"> Click when ready </button>
     <canvas></canvas>
     <script src = "./JavaScript/drawing.js"></script>
-    <script>
-    const guessSubmit = document.querySelector('.guessSubmit');
-        
-    </script>
+
 </body>
 </html>
