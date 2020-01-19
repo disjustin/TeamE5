@@ -5,6 +5,12 @@ canvas.height = window.innerHeight;
 
 var c = canvas.getContext('2d');
 
+function drawCircle(radius)
+{
+    c.beginPath();
+    c.arc(100, 100, radius, 0, 2* Math.PI , true);
+    c.stroke();
+}
 
 c.fillStyle = "red";
 c.fillRect(50, 50, 100, 100);
