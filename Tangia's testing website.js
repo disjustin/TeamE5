@@ -1,20 +1,19 @@
-var canvas = document.querySelector('canvas');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-var c = canvas.getContext('2d');
 
-function drawCircle(radius, xPos, yPos)
-{
-    c.fillText("Radius = " + radius, Math.round(xPos) + 0.8 * Math.round(radius), Math.round(yPos) - 0.8 * Math.round(radius), 100);
-
-    c.beginPath();
-    c.arc(xPos, yPos, radius, 0, 2* Math.PI , true);
-    c.stroke();
+function tributton() {
+    document.getElementById("circinterface").className = "hidden";
+    document.getElementById("quadinterface").className = "hidden";
+    document.getElementById("triinterface").className = "visible";
 }
-
-
-//When right triangle button is pressed
-
+function rectbutton() {
+    document.getElementById("circinterface").className = "hidden";
+    document.getElementById("triinterface").className = "hidden";
+    document.getElementById("quadinterface").className = "visible";
+}
+function circbutton() {
+    document.getElementById("triinterface").className = "hidden";
+    document.getElementById("quadinterface").className = "hidden";
+    document.getElementById("circinterface").className = "visible";
+}
 // function addtriangle(){
 //  if(triangleadded == false) 
 //      {
@@ -35,4 +34,3 @@ function drawCircle(radius, xPos, yPos)
 //     rectangleadded = true
 //      div.appendChild(rectangle)
 //      }
-//  }
