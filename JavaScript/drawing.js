@@ -7,36 +7,42 @@ var c = canvas.getContext('2d');
 
 function drawCircle(radius, xPos, yPos)
 {
-    c.fillText("what is this " + radius + " is here", 200, 100, 100);
+    c.fillText("Radius = " + radius, Math.round(radius) + Math.round(xPos), yPos);
 
     c.beginPath();
     c.arc(xPos, yPos, radius, 0, 2* Math.PI , true);
     c.stroke();
+
+    //for (var i = 0; i < 10; i++ )
+    //{
+    //   c.beginPath();
+    //    c.arc(Math.random()*window.innerWidth, Math.random()*window.innerHeight, radius++, 0, 2* Math.PI , true);
+    //    c.stroke();
+    //}
 }
 
-c.fillStyle = "red";
-c.fillRect(50, 50, 100, 100);
-c.fillStyle = "blue";
-c.fillRect(300, 300, 100, 100);
-c.fillStyle = "green";
-c.fillRect(159, 150, 100, 100);
+
+function drawRect()
+{
+    c.fillStyle = "red";
+    c.fillRect(50, 50, 100, 100);
+    c.fillStyle = "blue";
+    c.fillRect(300, 300, 100, 100);
+    c.fillStyle = "green";
+    c.fillRect(159, 150, 100, 100);
+}
 
 
-c.fillText("what is this", 400, 400, 100);
-
-//LIne
-c.beginPath();
-c.moveTo(50, 300);
-c.lineTo(300, 100);
-c.lineTo(400, 300);
-c.lineTo(50, 300);
-c.strokeStyle = "blue";
-c.stroke();
-
-//Circle
-c.beginPath();
-c.arc(400, 600, 100, 0, 2* Math.PI , true);
-c.stroke();
-
+function drawTriangle()
+{
+//Line
+    c.beginPath();
+    c.moveTo(50, 300);
+    c.lineTo(300, 100);
+    c.lineTo(400, 300);
+    c.lineTo(50, 300);
+    c.strokeStyle = "blue";
+    c.stroke();
+}
 
 console.log(canvas);
