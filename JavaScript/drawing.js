@@ -5,10 +5,12 @@ canvas.height = window.innerHeight;
 
 var c = canvas.getContext('2d');
 
-function drawCircle(radius)
+function drawCircle(radius, xPos, yPos)
 {
+    c.fillText("what is this " + radius + " is here", 200, 100, 100);
+
     c.beginPath();
-    c.arc(100, 100, radius, 0, 2* Math.PI , true);
+    c.arc(xPos, yPos, radius, 0, 2* Math.PI , true);
     c.stroke();
 }
 
