@@ -1,44 +1,29 @@
+//We are using canvas to draw the shapes
 var canvas = document.querySelector('canvas');
 
-// var svg = document.querySelector('svg');
-// // get svg data
-// var xml = new XMLSerializer().serializeToString(svg);
-
-// // make it base64
-// var svg64 = btoa(xml);
-// var b64Start = 'data:image/svg+xml;base64,';
-
-// // prepend a "header"
-// var image64 = b64Start + svg64;
-
-// // set it as the source of the img element
-// img.onload = function() {
-//     // draw the image onto the canvas
-//     canvas.getContext('2d').drawImage(img, 0, 0);
-// }
-// img.src = image64;
-
+//Set the canvas dimensions
 canvas.width = Math.ceil(window.innerWidth / 2 / 100) * 100;
 canvas.height = Math.ceil(window.innerHeight / 2 / 100) * 100;
-
-
-
 var c = canvas.getContext('2d');
 
+//Scaling for the objects
 var gridFactor = 10;
 
+//Allows the users to change the scaling of the graph where the shapes appear.
 function changeGridFactor(newGridFactor)
 {
     gridFactor = newGridFactor;
+    drawGrid();
 }
 
-
+// The function draws the grid in order to gain perspective for the shapes
 function drawGrid()
 {
     // Grid 
     var xGrid = 0;
     var yGrid = 0;
     c.globalAlpha = 0.2;
+    // Vertical lines
     for (var i = 0; i < canvas.width / gridFactor; i++)
     {
         c.beginPath();
@@ -48,6 +33,7 @@ function drawGrid()
         c.stroke();
         xGrid += gridFactor * 5;
     }
+    // Horizontal lines
     for (var j = 0; j < canvas.height / gridFactor; j++)
     {
         c.beginPath();
@@ -62,12 +48,13 @@ function drawGrid()
     c.strokeRect(0, 0, canvas.width, canvas.height);
 }
 
+// Clears the canvas
 function clearCanvas()
 {
     c.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-
+//Draw the circle with the input from the user
 function drawCircle(radius)
 {
     var xPos = parseInt(canvas.width) / 2 / gridFactor;
@@ -115,18 +102,13 @@ function drawRect(width, height)
     }
 }
 
-
 function drawTriangle(side1, side2, angle, equal)
 {
-    c.strokeStyle = "black";
-    c.strokeRect(0, 0, canvas.width, canvas.height);
     var side1 = parseInt(side1) * gridFactor;
     var side2 = parseInt(side2) * gridFactor;
+    var side3;
     var angle = (parseInt(angle) % 360) * Math.PI / 180;
-    //alert("sin  " + Math.round(Math.sin(angle)));
-    //alert("cos  " + Math.round(Math.cos(angle)));
     var xPos1, xPos2, xPos3, yPos1, yPos2, yPos3;
-
 
     xPos1 = 0;
     yPos1 = 0;
@@ -138,65 +120,71 @@ function drawTriangle(side1, side2, angle, equal)
 
     var xAve = (xPos1 + xPos2 + xPos3) / 3;
     var yAve = (yPos1 + yPos2 + yPos3) / -3;
-    //alert("X Average:" + xAve + " Y Average: " + yAve);
 
     var xOffset = (canvas.width / 2) - xAve;
     var yOffset = (canvas.height / 2) + yAve;
-    //alert(xPos1 + " " + yPos1 + " " + xPos2 + " " + yPos2 + " " + xPos3 + " " + yPos3);    
     
-    //alert("x: " + xOffset + " y: " + yOffset);
-
     xPos1 += xOffset;
     xPos2 += xOffset;
     xPos3 += xOffset;
     yPos1 += yOffset;
     yPos2 += yOffset;
     yPos3 += yOffset;
-    
-    //alert(xPos1 + " " + yPos1 + " " + xPos2 + " " + yPos2 + " " + xPos3 + " " + yPos3);    
 
-
-    //Line
-    c.clearRect(0, 0, canvas.width, canvas.height);
-    drawGrid();
-
-    c.beginPath();
-    c.moveTo(xPos1, yPos1);
-    c.lineTo(xPos2, yPos2);
-    c.lineTo(xPos3, yPos3);
-    c.lineTo(xPos1, yPos1);
-    c.strokeStyle = "black";  
-    c.stroke();
-
-    if (equal)
-    {
-        c.beginPath();
-        c.arc(xPos1, yPos1, (xPos2 - xPos1) / 10, 2*Math.PI - angle, 0 , false);
-        c.stroke();
+    if (xPos1 < 0 || xPos2 < 0 || xPos3 < 0 || xPos1 > canvas.width || xPos2 > canvas.width || xPos3 > canvas.width || 
+        yPos1 < 0 || yPos2 < 0 || yPos3 < 0 || yPos1 > canvas.height || yPos2 > canvas.height || yPos3 > canvas.height)
+        {
+            alert("Not a valid input for this size window");
+        }
+    else{
+        c.clearRect(0, 0, canvas.width, canvas.height);
+        drawGrid();
 
         c.beginPath();
-        c.arc(xPos2, yPos2, (xPos2 - xPos1) / 10, Math.PI + angle, Math.PI , true);
+        c.moveTo(xPos1, yPos1);
+        c.lineTo(xPos2, yPos2);
+        c.lineTo(xPos3, yPos3);
+        c.lineTo(xPos1, yPos1);
+        c.strokeStyle = "black";  
         c.stroke();
 
-        c.beginPath();
-        c.arc(xPos3, yPos3, (xPos2 - xPos1) / 10, Math.PI - angle, Math.PI - angle * 2, true);
-        c.stroke();
-    }
-    else
-    {
-        c.beginPath();
-        c.arc(xPos1, yPos1, (xPos2 - xPos1) / 10, 2*Math.PI - angle, 0 , false);
-        c.stroke();
+        if (equal)
+        {
+            c.beginPath();
+            c.arc(xPos1, yPos1, (xPos2 - xPos1) / 10, 2*Math.PI - angle, 0 , false);
+            c.stroke();
+
+            c.beginPath();
+            c.arc(xPos2, yPos2, (xPos2 - xPos1) / 10, Math.PI + angle, Math.PI , true);
+            c.stroke();
+
+            c.beginPath();
+            c.arc(xPos3, yPos3, (xPos2 - xPos1) / 10, Math.PI - angle, Math.PI - angle * 2, true);
+            c.stroke();
+        }
+        else
+        {
+            c.beginPath();
+            c.arc(xPos1, yPos1, (xPos2 - xPos1) / 10, 2*Math.PI - angle, 0 , false);
+            c.stroke();
+        }
     }
 }
 
 function drawEllipse(majorRadius, minorRadius)
 {
-    c.clearRect(0, 0, canvas.width, canvas.height);
-    drawGrid();
-    c.beginPath();
-    c.ellipse(canvas.width / 2, canvas.height / 2, majorRadius * gridFactor, minorRadius * gridFactor, 0, 0, 2 * Math.PI, false);
-    c.stroke();
+    if ((majorRadius * gridFactor > canvas.height) || (majorRadius * gridFactor > canvas.width) || 
+        (minorRadius * gridFactor > canvas.height) || (minorRadius * gridFactor > canvas.width))
+        {
+            alert("Not a valid input for this size window");
+        }
+    else {
+        c.clearRect(0, 0, canvas.width, canvas.height);
+        drawGrid();
+        c.beginPath();
+        c.ellipse(canvas.width / 2, canvas.height / 2, majorRadius * gridFactor, minorRadius * gridFactor, 0, 0, 2 * Math.PI, false);
+        c.stroke();
+    }
 }
 
 console.log(canvas);
