@@ -1,9 +1,30 @@
 var canvas = document.querySelector('canvas');
 
-canvas.width = 1000;
-canvas.height = 500;
+// var svg = document.querySelector('svg');
+// // get svg data
+// var xml = new XMLSerializer().serializeToString(svg);
+
+// // make it base64
+// var svg64 = btoa(xml);
+// var b64Start = 'data:image/svg+xml;base64,';
+
+// // prepend a "header"
+// var image64 = b64Start + svg64;
+
+// // set it as the source of the img element
+// img.onload = function() {
+//     // draw the image onto the canvas
+//     canvas.getContext('2d').drawImage(img, 0, 0);
+// }
+// img.src = image64;
+
+canvas.width = Math.ceil(window.innerWidth / 2 / 100) * 100;
+canvas.height = Math.ceil(window.innerHeight / 2 / 100) * 100;
+
+
 
 var c = canvas.getContext('2d');
+
 const gridFactor = 10;
 
 function drawGrid()
@@ -82,7 +103,11 @@ function drawRect(width, height)
 
 function drawTriangle(side1, side2, angle)
 {
-    c.strokeStyle = "red";
+    alert("triangle");
+    if (side1 === side2)
+        alert("equal");
+    alert(angle);
+    c.strokeStyle = "black";
     c.strokeRect(0, 0, canvas.width, canvas.height);
     var side1 = parseInt(side1) * gridFactor;
     var side2 = parseInt(side2) * gridFactor;
