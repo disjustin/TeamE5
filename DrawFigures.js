@@ -25,7 +25,13 @@ canvas.height = Math.ceil(window.innerHeight / 2 / 100) * 100;
 
 var c = canvas.getContext('2d');
 
-const gridFactor = 10;
+var gridFactor = 10;
+
+function changeGridFactor(newGridFactor)
+{
+    gridFactor = newGridFactor;
+}
+
 
 function drawGrid()
 {
@@ -52,6 +58,8 @@ function drawGrid()
         yGrid += gridFactor * 5;
     }
     c.globalAlpha = 1;;
+    c.strokeStyle = "black";
+    c.strokeRect(0, 0, canvas.width, canvas.height);
 }
 
 function clearCanvas()
@@ -60,17 +68,21 @@ function clearCanvas()
 }
 
 
-
 function drawCircle(radius)
 {
-    if (radius > 0)
-    {
-        var xPos = parseInt(canvas.width) / 2 / gridFactor;
-        var yPos = parseInt(canvas.height) / 2 / gridFactor;
+    var xPos = parseInt(canvas.width) / 2 / gridFactor;
+    var yPos = parseInt(canvas.height) / 2 / gridFactor;
+    radius = parseInt(radius);
 
+    if ((xPos + radius)> (canvas.width  / gridFactor) || (yPos + radius)> (canvas.height  / gridFactor))
+    {
+        alert("Not a valid input for this size window");
+    }
+    else if (radius > 0)
+    {
         c.clearRect(0, 0, canvas.width, canvas.height);
         drawGrid();
-        c.fillText("Radius = " + radius, gridFactor * (Math.round(radius) + Math.round(xPos)) + 10, yPos * gridFactor);
+        c.fillText("Radius = " + radius, gridFactor * (radius + xPos) + 10, yPos * gridFactor);
         
         c.beginPath();
         c.arc(xPos * gridFactor, yPos * gridFactor, radius * gridFactor, 0, 2* Math.PI , true);
@@ -83,10 +95,13 @@ function drawCircle(radius)
 
 function drawRect(width, height)
 {
-
     if (width < 0 || height < 0)
     {
         alert("Values must be non-negative, duh");
+    }
+    else if (width > canvas.width / gridFactor || height > canvas.height / gridFactor)
+    {
+        alert("Not a valid input for this size window");
     }
     else{
         var width = parseInt(width) * gridFactor;
@@ -101,12 +116,8 @@ function drawRect(width, height)
 }
 
 
-function drawTriangle(side1, side2, angle)
+function drawTriangle(side1, side2, angle, equal)
 {
-    alert("triangle");
-    if (side1 === side2)
-        alert("equal");
-    alert(angle);
     c.strokeStyle = "black";
     c.strokeRect(0, 0, canvas.width, canvas.height);
     var side1 = parseInt(side1) * gridFactor;
@@ -157,9 +168,26 @@ function drawTriangle(side1, side2, angle)
     c.strokeStyle = "black";  
     c.stroke();
 
-    c.beginPath();
-    c.arc(xPos1, yPos1, (xPos2 - xPos1) / 10, 2*Math.PI - angle, 0 , false);
-    c.stroke();
+    if (equal)
+    {
+        c.beginPath();
+        c.arc(xPos1, yPos1, (xPos2 - xPos1) / 10, 2*Math.PI - angle, 0 , false);
+        c.stroke();
+
+        c.beginPath();
+        c.arc(xPos2, yPos2, (xPos2 - xPos1) / 10, Math.PI + angle, Math.PI , true);
+        c.stroke();
+
+        c.beginPath();
+        c.arc(xPos3, yPos3, (xPos2 - xPos1) / 10, Math.PI - angle, Math.PI - angle * 2, true);
+        c.stroke();
+    }
+    else
+    {
+        c.beginPath();
+        c.arc(xPos1, yPos1, (xPos2 - xPos1) / 10, 2*Math.PI - angle, 0 , false);
+        c.stroke();
+    }
 }
 
 function drawEllipse(majorRadius, minorRadius)

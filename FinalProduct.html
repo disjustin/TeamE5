@@ -43,12 +43,12 @@ canvas {background: transparent}
         <input type = "number" id = "triLeg2" value= "triLeg2" placeholder = "Enter Length of Side 2">
         <input type = "number" id = "angle" value= "angle" placeholder = "Enter Angle between Them">
         <br>
-        <button type = "submit" onclick="drawTriangle(document.getElementById('triLeg1').value, document.getElementById('triLeg2').value,document.getElementById('angle').value)" id = "btnscalenetri"> Click for Triangle </button>
+        <button type = "submit" onclick="drawTriangle(document.getElementById('triLeg1').value, document.getElementById('triLeg2').value,document.getElementById('angle').value, false)" id = "btnscalenetri"> Click for Triangle </button>
     </div>
     <div id = "equaltriinterface", class = "hidden">
         <input type = "number" id = "triside" value= "triside" placeholder = "Enter Length of the Side">
         <br>
-        <button type = "submit" onclick="drawTriangle(document.getElementById('triside').value, document.getElementById('triside').value, 60)" id = "btnequaltri"> Click for Triangle </button>
+        <button type = "submit" onclick="drawTriangle(document.getElementById('triside').value, document.getElementById('triside').value, 60, true)" id = "btnequaltri"> Click for Triangle </button>
     </div>
 </div>
 
