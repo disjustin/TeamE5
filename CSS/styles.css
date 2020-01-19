@@ -1,6 +1,6 @@
 body {
     text-align: center;
-    background-color: #f0e8c5;
+    background-color: red;
   }
   
   div {
@@ -17,3 +17,7 @@ body {
     margin-left: 25px;
     background-color: white;
   }
+
+#canvas {
+  border: 2px solid goldenrod;
+}
