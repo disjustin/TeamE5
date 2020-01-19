@@ -9,23 +9,47 @@
         }
         body { margin: 0; }
     </style>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <script type = "text/JavaScript" src = "drawing.js"></script>
     
     <!-- document.getElementById("radius").value -->
 </head>
 <body>
-    <input type = "number" id = "radius" value= "radius" placeholder = "Enter the Radius">
-    <input type = "number" id = "rectWidth" value= "rectWidth" placeholder = "Enter Width for Rectangle">
-    <input type = "number" id = "rectHeight" value= "rectHeight" placeholder = "Enter Height for Rectangle">
+    <h1>Select your polygon</h1>
+
+    <button class="block" onclick="displayInputSquare()">Square </button>
+    <button class="block" onclick="displayInputRectangle()">Rectangle</button>
+
+
+    <p id="demo"></p>
+    <!--square-->
+    <input class="hidden" type = "number"  id="side1s" value = "sideLength" placeholder="Enter Length">
+    <button class = "hidden" type = "submit" onclick="drawRect(document.getElementById('side1s').value, document.getElementById('side1s').value)" id = "squarebtn"> Click to Enter </button>
+
+    <!--rectangle-->
+    <input class="hidden" type = "number" id="side1r" value= "rectWidth" placeholder="Enter Width for Rectangle"> 
+    <input class="hidden" type = "number" id="side2r" value= "rectHeight" placeholder="Enter Height for Rectangle"> 
     <br>
-    <button type = submit onclick="drawCircle(document.getElementById('radius').value)" id = "btn1"> Click when ready </button>
-    <button type = submit onclick="drawTriangle()" id = "btnTriangle"> Click for triangle </button>
-    <button type = submit onclick="drawRect(document.getElementById('rectWidth').value, document.getElementById('rectHeight').value)" id = "btnRect"> Click for rectangle </button>
+    <button class="hidden" type = "submit" onclick="drawRect(document.getElementById('side1r').value, document.getElementById('side2r').value)" id = "btnRect"> Click for rectangle </button>
+
+    <!-- <input type = "number" id = "rectWidth" value= "rectWidth" placeholder = "Enter Width for Rectangle"> -->
+    <!-- <input type = "number" id = "rectHeight" value= "rectHeight" placeholder = "Enter Height for Rectangle"> -->
+
+    <!-- <input type = "number" id = "radius" value= "radius" placeholder = "Enter the Radius"> -->
+
+
+    <br>
+    <!-- <button type = submit onclick="drawCircle(document.getElementById('radius').value)" id = "btn1"> Click when ready </button> -->
+    <!-- <button type = submit onclick="drawTriangle()" id = "btnTriangle"> Click for triangle </button> -->
+
+    <!-- <button type = submit onclick="drawRect(document.getElementById('rectWidth').value, document.getElementById('rectHeight').value)" id = "btnRect"> Click for rectangle </button> -->
+   
     <br>
     <br>
     <br>
 
     <canvas></canvas>
+    <script src="./JavaScript/index.js"></script>
     <script src = "./JavaScript/drawing.js"></script>
 
 </body>
