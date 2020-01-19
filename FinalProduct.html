@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<head>
+<html>
+<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+canvas {background: transparent}
+.block {
+  background-color: #f4511e;
+  border: 3px rgb(0,0,0);
+  color: white;
+  padding: 16px 32px; 
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer; 
+}
+
+.block:hover {
+    opacity: 1;
+} 
+</style>
+    <link rel="stylesheet" type="text/css" href="Styles.css">
+
+</head>
+
+</body>
+<h1>Draw-A-Figure</h1>
+<button class="block" onclick="tributton()">Triangle</button>
+<button class="block" onclick="quadbutton()">Quadrilateral</button>
+<button class="block"onclick="circbutton()">Circle</button>
+
+<div id= "triinterface", class="hidden">
+    <button  class= "block"> Isosceles Triangle</button>
+
+    <h1>Input for Triangle:</h1>
+    <input type = "number" id = "triLeg1" value= "triLeg1" placeholder = "Enter Length of first Triangle Side">
+    <input type = "number" id = "triLeg2" value= "triLeg2" placeholder = "Enter Length of second Triangle Side">
+    <input type = "number" id = "angle" value= "angle" placeholder = "Enter angle between two sides">
+    <br>
+    <button type = "submit" onclick="drawTriangle(document.getElementById('triLeg1').value, document.getElementById('triLeg2').value,document.getElementById('angle').value)" id = "btnRect"> Click for rectangle </button>
+</div>
+
+<div id= "quadinterface", class="hidden">
+    <h1>Select your Quadrilateral</h1>
+    <!--quadrilateral (display square or rectangle buttons)-->
+    <button class="block" onclick="displayInputSquare()">Square </button>
+    <button class="block" onclick="displayInputRectangle()">Rectangle</button>
+
+    <div id= "sqinterface", class="hidden">
+        <p id="demo"></p>
+        <!--square-->
+        <input  type = "number"  id="side1s" value = "sideLength" placeholder="Enter Length">
+        <button  type = "submit" onclick="drawRect(document.getElementById('side1s').value, document.getElementById('side1s').value)" id = "squarebtn"> Click to Enter </button>
+    </div>
+
+    <div id= "rectinterface", class="hidden">
+        <!--rectangle-->
+        <input type = "number" id = "rectWidth" value= "rectWidth" placeholder = "Enter Width for Rectangle">
+        <input type = "number" id = "rectHeight" value= "rectHeight" placeholder = "Enter Height for Rectangle">
+        <br>
+        <button type = "submit" onclick="drawRect(document.getElementById('rectWidth').value, document.getElementById('rectHeight').value)" id = "btnRect"> Click for rectangle </button>
+    </div>
+
+</div>
+
+<div id= "circinterface", class="hidden"> 
+    <!--circle-->
+    <h1>Enter Radius:</h1>
+    <input type = "number" id = "radius" value= "radius" placeholder = "Enter the Radius"> 
+    <br>
+    <button type = submit onclick="drawCircle(document.getElementById('radius').value)" id = "btn1"> Click when ready </button> 
+</div>
+<br>
+<canvas></canvas>
+<script src="DrawFigures.js"></script>
+<script src="Interface_buttons.js"></script>
+</body>
+</html>  

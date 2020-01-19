@@ -4,7 +4,7 @@ function tributton() {
     document.getElementById("quadinterface").className = "hidden";
     document.getElementById("triinterface").className = "visible";
 }
-function rectbutton() {
+function quadbutton() {
     document.getElementById("circinterface").className = "hidden";
     document.getElementById("triinterface").className = "hidden";
     document.getElementById("quadinterface").className = "visible";
@@ -14,23 +14,11 @@ function circbutton() {
     document.getElementById("quadinterface").className = "hidden";
     document.getElementById("circinterface").className = "visible";
 }
-// function addtriangle(){
-//  if(triangleadded == false) 
-//      {
-        
-//         var div = document.getElementById("deftri");
-//        var triangle = document.createElement("div");
-//         triangle.className = "triangle-up";
-//          triangleadded = true
-//          div.appendChild(triangle)
-//     }
-//  }
-// function addrectangle(){
-//     if(rectangleadded == false)
-// {
-//     var div = document.getElementById("defrec");
-//     var rectange = document.createElement("div");
-//     rectange.className = "rectangle";
-//     rectangleadded = true
-//      div.appendChild(rectangle)
-//      }
+function displayInputSquare() {
+    document.getElementById("rectinterface").className = "hidden";
+    document.getElementById("sqinterface").className = "visible";
+}
+function displayInputRectangle() {
+    document.getElementById("sqinterface").className = "hidden";
+    document.getElementById("rectinterface").className = "visible";
+}
