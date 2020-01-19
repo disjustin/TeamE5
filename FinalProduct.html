@@ -9,7 +9,43 @@ canvas {background: transparent}
 .numinputbox{
     color: rgb(0, 0, 0);
 }
+.gridtitle {
+color: #001f3f;
+    margin: 20px 10px 1px;
+    font-size: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif 
+}
+.slider {
+  -webkit-appearance: none;
+  width: 25%;
+  height: 15px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  margin: 20px
+}
 
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
 .button {
   display: inline-block;
   border-radius: 2px;
@@ -112,13 +148,19 @@ canvas {background: transparent}
 }
 .title {
     color: #001f3f;
-    font-size: 40px;
+    font-size: 60px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .subtitle {
     color: #001f3f;
     margin: 30px 10px 20px;
     font-size: 30px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif 
+}
+.subsubtitle {
+    color: #001f3f;
+    margin: 30px 10px 20px;
+    font-size: 20px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif 
 }
 .block:hover {
@@ -130,8 +172,10 @@ canvas {background: transparent}
 </head>
 
 </body>
-<<<<<<< HEAD
 <h1 class = "title">Draw-A-Figure </h1>
+<div class="slidecontainer">
+  </div>
+
 <button class = "selectbutton" onclick="tributton()">Triangle</button>
 <button class = "selectbutton" onclick="quadbutton()">Quadrilateral</button>
 <button class = "selectbutton" onclick="conicButton()">Conic</button>
@@ -141,13 +185,16 @@ canvas {background: transparent}
     <button class ="smallsbutton" onclick="displayInputEqualTri()">Equilateral Triangle </button>
     <button class ="smallsbutton" onclick="displayInputScaleneTri()">Scalene Triangle </button>
     <div id = "scalenetriinterface", class = "hidden">
-        <h1 class = "subtitle">Enter Side Lengths and Angle</h1>
+        <h1 class = "subsubtitle">Enter Side Lengths and Angle</h1>
         <input class = "numinputbox" type = "number" id = "triLeg1" value= "triLeg1" step="10" placeholder = "Enter Length of Side 1">
         <br>
         <input class = "numinputbox" type = "number" id = "triLeg2" value= "triLeg2" step="10" placeholder = "Enter Length of Side 2">
         <br>
         <input class = "numinputbox" type = "number" id = "angle" value= "angle" list="commonangles" step="10" placeholder = "Enter Angle between Them">
         <span class ="validity"></span>
+        <p class = "gridtitle"> Grid Size - Each Square is 5 units</p>
+    <input type="range" min="1" max="11" value="6" class="slider" onchange="changeGridFactor(value)" id="myRange">
+    <br>
             <datalist id="commonangles">
                 <option value="30">
                 <option value="45"></option>
@@ -161,32 +208,14 @@ canvas {background: transparent}
         <button class = "button" type = "submit" onclick = "drawTriangle(document.getElementById('triLeg1').value, document.getElementById('triLeg2').value,document.getElementById('angle').value)" id = "btnscalenetri"><span>Draw!</span></button>
     </div>
     <div id = "equaltriinterface", class = "hidden">
-        <h1 class = "subtitle">Enter Side Length</h1>
+        <h1 class = "subsubtitle">Enter Side Length</h1>
         <input type = "number" id = "triside" value = "triside" step ="10" placeholder = "Enter Length of the Side">
         <br>
+        <p class = "gridtitle"> Grid Size - Each Square is 5 units</p>
+        <input type="range" min="1" max="11" value="6" class="slider" onchange="changeGridFactor(value)" id="myRange">
+        <br>
         <button class = "button" type = "submit" onclick="drawTriangle(document.getElementById('triside').value, document.getElementById('triside').value, 60)" id = "btnequaltri"><span>Draw!</span> </button>
-=======
-<h1>Draw-A-Figure</h1>
-<button class="block" onclick="tributton()">Triangle</button>
-<button class="block" onclick="quadbutton()">Quadrilateral</button>
-<button class="block"onclick="conicButton()">Conic</button>
-
-<div id= "triinterface", class="hidden">
-    <h1>Select your Triangle</h1>
-    <button class="block" onclick="displayInputEqualTri()">Equilateral Triangle </button>
-    <button class="block" onclick="displayInputScaleneTri()">Scalene Triangle </button>
-    <div id = "scalenetriinterface", class = "hidden">
-        <input type = "number" id = "triLeg1" value= "triLeg1" placeholder = "Enter Length of Side 1">
-        <input type = "number" id = "triLeg2" value= "triLeg2" placeholder = "Enter Length of Side 2">
-        <input type = "number" id = "angle" value= "angle" placeholder = "Enter Angle between Them">
-        <br>
-        <button type = "submit" onclick="drawTriangle(document.getElementById('triLeg1').value, document.getElementById('triLeg2').value,document.getElementById('angle').value)" id = "btnscalenetri"> Click for Triangle </button>
-    </div>
-    <div id = "equaltriinterface", class = "hidden">
-        <input type = "number" id = "triside" value= "triside" placeholder = "Enter Length of the Side">
-        <br>
-        <button type = "submit" onclick="drawTriangle(document.getElementById('triside').value, document.getElementById('triside').value, 60)" id = "btnequaltri"> Click for Triangle </button>
->>>>>>> d2acb4f07fd4870b9f4ecef1b6753c265fb00dd8
+       
     </div>
 </div>
 
@@ -197,22 +226,30 @@ canvas {background: transparent}
     <button class="smallsbutton" onclick="displayInputRectangle()">Rectangle</button>
 
     <div id= "sqinterface", class="hidden">
-        <h1 class = "subtitle">Enter Side Length</h1>
+        <h1 class = "subsubtitle">Enter Side Length</h1>
         <p id="demo"></p>
         <!--square-->
         <input  type = "number"  id="side1s" value = "sideLength" step = "10" placeholder="Enter Length">
         <br>
+        <p class = "gridtitle"> Grid Size - Each Square is 5 units</p>
+    <input type="range" min="1" max="11" value="6" class="slider" onchange="changeGridFactor(value)" id="myRange">
+    <br>
         <button  class="button" type = "submit" onclick="drawRect(document.getElementById('side1s').value, document.getElementById('side1s').value)" id = "squarebtn"> <span>Draw!</span> </button>
+        
     </div>
 
     <div id= "rectinterface", class="hidden">
         <!--rectangle-->
-        <h1 class = "subtitle">Enter Width and Height</h1>
+        <h1 class = "subsubtitle">Enter Width and Height</h1>
         <input type = "number" id = "rectWidth" value= "rectWidth" step = "10" placeholder = "Enter Width for Rectangle">
         <br>
         <input type = "number" id = "rectHeight" value= "rectHeight" Step = "10" placeholder = "Enter Height for Rectangle">
         <br>
+        <p class = "gridtitle"> Grid Size - Each Square is 5 units</p>
+    <input type="range" min="1" max="11" value="6" class="slider" onchange="changeGridFactor(value)" id="myRange">
+    <br>
         <button class = "button" type = "submit" onclick="drawRect(document.getElementById('rectWidth').value, document.getElementById('rectHeight').value)" id = "btnRect"> <span>Draw!</span> </button>
+        
     </div>
 
 </div>
@@ -224,20 +261,28 @@ canvas {background: transparent}
 
     <div id= "circinterface", class="hidden"> 
         <!--circle-->
-        <h1 class = "subtitle">Enter Radius</h1>
+        <h1 class = "subsubtitle">Enter Radius</h1>
         <input type = "number" id = "radius" value= "radius" step = "2" placeholder = "Enter the Radius"> 
         <br>
+        <p class = "gridtitle"> Grid Size - Each Square is 5 units</p>
+    <input type="range" min="1" max="11" value="6" class="slider" onchange="changeGridFactor(value)" id="myRange">
+    <br>
         <button class = "button" type = submit onclick="drawCircle(document.getElementById('radius').value)" id = "btn1"> <span>Draw!</span> </button> 
+        
     </div>
 
     <div id= "ellipseinterface", class="hidden"> 
         <!--ellipse-->
-        <h1 class = "subtitle">Enter Radii</h1>
+        <h1 class = "subsubtitle">Enter Radii</h1>
         <input type = "number" id = "majorRadius" value= "majorRadius" step = "2" placeholder = "Enter the Major-Axis Radius"> 
         <br>
         <input type = "number" id = "minorRadius" value= "minorRadius" step = "2" placeholder = "Enter the Minor-Axis Radius"> 
         <br>
+        <p class = "gridtitle"> Grid Size - Each Square is 5 units</p>
+    <input type="range" min="1" max="11" value="6" class="slider" onchange="changeGridFactor(value)" id="myRange">
+    <br>
         <button class = "button" type = submit onclick="drawEllipse(document.getElementById('majorRadius').value, document.getElementById('minorRadius').value)" id = "ellipsebtn"> <span>Draw!</span> </button> 
+        
     </div>
 </div>
 
