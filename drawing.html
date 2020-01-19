@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Drawing Example</title>
+    <title>Drawing a Circle</title>
     <style type="test/css"> 
         canvas { border: 1px solid black;
         background: red;
@@ -11,14 +11,13 @@
     </style>
     <script type = "text/JavaScript" src = "drawing.js"></script>
     
-    <!-- document.getElementById("radius").value -->
 </head>
 <body>
     <input type = "number" id = "radius" value= "radius" placeholder = "Enter the Radius">
     <input type = "number" id = "xPos" value= "xPos" placeholder = "Enter xPos">
     <input type = "number" id = "yPos" value= "yPos" placeholder = "Enter the yPos">
     <br>
-    <button type = submit onclick="drawCircle(document.getElementById('radius').value, document.getElementById('xPos').value, document.getElementById('yPos').value)" id = "btn1"> Click when ready </button>
+    <button type = submit onclick="drawCircle(document.getElementById('radius').value, document.getElementById('xPos').value, document.getElementById('yPos').value)" id = "btn1"> Draw Circle </button>
     <canvas></canvas>
     <script src = "./JavaScript/drawing.js"></script>
 
