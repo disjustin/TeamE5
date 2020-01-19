@@ -1,3 +1,8 @@
+// Rohan Skariah 
+// Tangia Sun
+// Ryan Teoh 
+// Justin Wong 
+
 function tributton() {
     document.getElementById("conicinterface").className = "hidden";
     document.getElementById("quadinterface").className = "hidden";
