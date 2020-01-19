@@ -130,7 +130,6 @@ canvas {background: transparent}
 </head>
 
 </body>
-<<<<<<< HEAD
 <h1 class = "title">Draw-A-Figure </h1>
 <button class = "selectbutton" onclick="tributton()">Triangle</button>
 <button class = "selectbutton" onclick="quadbutton()">Quadrilateral</button>
@@ -164,29 +163,7 @@ canvas {background: transparent}
         <h1 class = "subtitle">Enter Side Length</h1>
         <input type = "number" id = "triside" value = "triside" step ="10" placeholder = "Enter Length of the Side">
         <br>
-        <button class = "button" type = "submit" onclick="drawTriangle(document.getElementById('triside').value, document.getElementById('triside').value, 60)" id = "btnequaltri"><span>Draw!</span> </button>
-=======
-<h1>Draw-A-Figure</h1>
-<button class="block" onclick="tributton()">Triangle</button>
-<button class="block" onclick="quadbutton()">Quadrilateral</button>
-<button class="block"onclick="conicButton()">Conic</button>
-
-<div id= "triinterface", class="hidden">
-    <h1>Select your Triangle</h1>
-    <button class="block" onclick="displayInputEqualTri()">Equilateral Triangle </button>
-    <button class="block" onclick="displayInputScaleneTri()">Scalene Triangle </button>
-    <div id = "scalenetriinterface", class = "hidden">
-        <input type = "number" id = "triLeg1" value= "triLeg1" placeholder = "Enter Length of Side 1">
-        <input type = "number" id = "triLeg2" value= "triLeg2" placeholder = "Enter Length of Side 2">
-        <input type = "number" id = "angle" value= "angle" placeholder = "Enter Angle between Them">
-        <br>
-        <button type = "submit" onclick="drawTriangle(document.getElementById('triLeg1').value, document.getElementById('triLeg2').value,document.getElementById('angle').value)" id = "btnscalenetri"> Click for Triangle </button>
-    </div>
-    <div id = "equaltriinterface", class = "hidden">
-        <input type = "number" id = "triside" value= "triside" placeholder = "Enter Length of the Side">
-        <br>
-        <button type = "submit" onclick="drawTriangle(document.getElementById('triside').value, document.getElementById('triside').value, 60)" id = "btnequaltri"> Click for Triangle </button>
->>>>>>> d2acb4f07fd4870b9f4ecef1b6753c265fb00dd8
+        <button class = "button" type = "submit" onclick="drawTriangle(document.getElementById('triside').value, document.getElementById('triside').value, 60, true)" id = "btnequaltri"><span>Draw!</span> </button>
     </div>
 </div>
 
