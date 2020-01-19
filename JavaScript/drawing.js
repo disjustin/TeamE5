@@ -78,25 +78,47 @@ function drawRect(width, height)
 }
 
 
-function drawTriangle()
+function drawTriangle(side1, side2, angle)
 {
-
+    var side1 = parseInt(side1) * gridFactor;
+    var side2 = parseInt(side2) * gridFactor;
+    var angle = (parseInt(angle) % 360) * Math.PI / 180;
+    //alert("sin  " + Math.round(Math.sin(angle)));
+    //alert("cos  " + Math.round(Math.cos(angle)));
     var xPos1, xPos2, xPos3, yPos1, yPos2, yPos3;
+    var xOffset = 100;
+    var yOffset = 200;
 
+    xPos1 = 0 + xOffset;
+    yPos1 = 0 + yOffset;
+    xPos2 = side1 + xOffset;
+    yPos2 = 0 + yOffset;
 
+    
+    xPos3 = (side2 * Math.cos(angle)) + xOffset;
+    yPos3 = (side2 * Math.sin(angle)) + yOffset;
+    yPos3 = 2 * yPos1 - yPos3;
 
+    
+    //alert(xPos1 + " " + yPos1 + " " + xPos2 + " " + yPos2 + " " + xPos3 + " " + yPos3);    
+    //Line
+    c.clearRect(0, 0, canvas.width, canvas.height);
+    drawGrid();
 
-//Line
-c.clearRect(0, 0, canvas.width, canvas.height);
-drawGrid();
 
     c.beginPath();
-    c.moveTo(50, 300);
-    c.lineTo(300, 100);
-    c.lineTo(400, 300);
-    c.lineTo(50, 300);
-    c.strokeStyle = "blue";
+    c.moveTo(xPos1, yPos1);
+    c.lineTo(xPos2, yPos2);
+    c.lineTo(xPos3, yPos3);
+    c.lineTo(xPos1, yPos1);
+    alert(angle);
+    c.strokeStyle = "black";  
     c.stroke();
+
+    c.beginPath();
+    c.arc(xPos1, yPos1, (xPos2 - xPos1) / 10, 2*Math.PI - angle, 0 , false);
+    c.stroke();
+
 }
 
 console.log(canvas);
