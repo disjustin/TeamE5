@@ -23,9 +23,10 @@
 .block:hover 
     hover {opacity: 1}
     </style>
-</body>
+    <link rel="stylesheet" type="text/css" href="Styles.css">
 </head>
 
+</body>
 <button class="block"
 onclick= "trianglefunction()">Triangle</button>
 <div id="myDIV"></div>
@@ -33,22 +34,21 @@ onclick= "trianglefunction()">Triangle</button>
 <button class="block"onclick= drawCircle()>Circle</button>
 
 
-<!-- <h1>Select your triangle</h1>
-button pressing for what triangle
+<h1>Select your triangle</h1>
 <button class="block" 
 onclick="//myfunction">Right Triangle
 
 </button>
-<button class="block">Equilateral Triangle</button>
-<button class="block">Isosceles Triangle</button>
+<button class="block" class = "hidden">Equilateral Triangle</button>
+<button class="block" class = "hidden"> Isosceles Triangle</button>
 
 
 
     <h1>Input for Triangle:</h1>
-    <form action="/action_page.php">
+    <form action="/action_page.php" class = "hidden">
         Side 1: <input type="text" name="fname"><br>
         Side 2: <input type="text" name="lname"><br>
         <input type="submit" value="Submit">
       </form>
 </body>
-</html> -->
+</html>  
