@@ -4,6 +4,17 @@ function tributton() {
     document.getElementById("triinterface").className = "visible";
     c.clearRect(0, 0, canvas.width, canvas.height);
 }
+function displayInputScaleneTri() {
+    document.getElementById("scalenetriinterface").className = "visible";
+    document.getElementById("equaltriinterface").className = "hidden";
+    c.clearRect(0, 0, canvas.width, canvas.height);
+}
+function displayInputEqualTri() {
+    document.getElementById("scalenetriinterface").className = "hidden";
+    document.getElementById("equaltriinterface").className = "visible";
+    c.clearRect(0, 0, canvas.width, canvas.height);
+}
+
 function quadbutton() {
     document.getElementById("conicinterface").className = "hidden";
     document.getElementById("triinterface").className = "hidden";
